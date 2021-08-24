@@ -1,3 +1,4 @@
+-- Data Definition Language Checkpoint
 CREATE TABLE Product (
     Product_id VARCHAR2(20) CONSTRAINT pk_product PRIMARY KEY,
     Product_name VARCHAR2(20) CONSTRAINT nn_product_name NOT NULL,
@@ -22,3 +23,95 @@ CREATE TABLE Orders (
 ALTER TABLE Product ADD Category VARCHAR2(100);
 
 ALTER TABLE Orders ADD Orderdate DATE CONSTRAINT default_date DEFAULT (SYSDATE);
+
+-- Data Manipulation Language Checkpoint
+-- Inserting in the Customer Table
+INSERT INTO Customer 
+(
+    Customer_id,
+    Customer_name,
+    Customer_tel
+)
+VALUES
+(
+    "C01",
+    "Ali",
+    71321009
+)
+
+INSERT INTO Customer 
+(
+    Customer_id,
+    Customer_name,
+    Customer_tel
+)
+VALUES
+(
+    "C02",
+    "Asma",
+    77345823
+)
+
+-- Inserting in the Product Table
+INSERT INTO Product 
+(
+    Product_id,
+    Product_name,
+    Price,
+    Category
+)
+VALUES
+(
+    "P01",
+    "Samsung Galaxy 520",
+    3299,
+    "Smartphone"
+)
+
+INSERT INTO Product 
+(
+    Product_id,
+    Product_name,
+    Price,
+    Category
+)
+VALUES
+(
+    "P02",
+    "Asus Notebook",
+    4599,
+    "PC"
+)
+
+-- Inserting in the Orders Table
+INSERT INTO Orders 
+(
+    Product_id,
+    Customer_id,
+    Quantity,
+    Total_amount
+)
+VALUES
+(
+    "P01",
+    "C01",
+    2,
+    9198
+)
+
+INSERT INTO Orders 
+(
+    Product_id,
+    Customer_id,
+    Quantity,
+    Total_amount,
+    Orderdate
+)
+VALUES
+(
+    "P02",
+    "C02",
+    1,
+    3299,
+    "28/05/2020"
+)
