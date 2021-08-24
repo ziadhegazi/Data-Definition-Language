@@ -1,0 +1,24 @@
+CREATE TABLE Product (
+    Product_id VARCHAR2(20) CONSTRAINT pk_product PRIMARY KEY,
+    Product_name VARCHAR2(20) CONSTRAINT nn_product_name NOT NULL,
+    price NUMBER CONSTRAINT positive_price CHECK (price >= 0)
+)
+
+CREATE TABLE Customer (
+    Customer_id VARCHAR2(20) CONSTRAINT pk_customer PRIMARY KEY,
+    Customer_name VARCHAR2(20) CONSTRAINT nn_customer_name NOT NULL,
+    Customer_tel NUMBER
+)
+
+CREATE TABLE Orders (
+    Product_id VARCHAR2(20),
+    Customer_id VARCHAR2(20),
+    Quantity NUMBER,
+    Total_amount NUMBER,
+    CONSTRAINT fk_product FOREIGN KEY (Product_id) REFERENCES Product (Product_id),
+    CONSTRAINT fk_customer FOREIGN KEY (Customer_id) REFERENCES Customer (Product_id)
+)
+
+ALTER TABLE Product ADD Category VARCHAR2(100);
+
+ALTER TABLE Orders ADD Orderdate DATE CONSTRAINT default_date DEFAULT (SYSDATE);
